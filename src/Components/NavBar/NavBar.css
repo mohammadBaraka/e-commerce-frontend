@@ -1,0 +1,117 @@
+/*------------------ Start Header In Nav Bar -------------------------*/
+.header {
+  width: 100%;
+  height: 10rem;
+  background-image: linear-gradient(to left, #833471, #5758bb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header button {
+  width: 350px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.profile {
+  font-weight: bold;
+  font-size: 20px;
+}
+.header button i {
+  margin-left: 20px;
+}
+/*------------------ End Header In Nav Bar -------------------------*/
+
+/*----------------Change color for placeholder-------------------*/
+::-moz-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+::-webkit-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+::-o-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+/*------------------ Start Navigation Bar -------------------------*/
+.NavigationBar {
+  height: 150px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.NavigationBar i {
+  margin-left: 20px;
+  font-size: 35px;
+}
+
+.NavigationBar a {
+  font-size: 25px;
+  font-weight: bold;
+  height: 70px;
+  display: inline-block;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 40px;
+  transition: border 0.4s;
+  line-height: 50px;
+}
+
+.NavigationBar a:hover {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  box-shadow: 1px 1px 5px 0.1px black;
+}
+
+.NavigationBar a:focus {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  box-shadow: 1px 1px 5px 0.1px black;
+}
+
+/*------------------ End Navigation Bar -------------------------*/
+
+/*? Media Responsive   */
+
+@media (max-width: 1100px) {
+  .header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .header button {
+    width: 95%;
+  }
+  .NavigationBar {
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto 50px auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+    margin-bottom: 50px;
+  }
+  .header button {
+    width: 100% !important;
+  }
+  .NavigationBar {
+    margin-bottom: 350px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
