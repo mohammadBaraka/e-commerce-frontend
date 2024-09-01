@@ -4,9 +4,9 @@ import "./Sign Up.css";
 import { useState } from "react";
 import axios from "axios";
 import { handeMessage } from "../SweetAlert/SweetAlert";
+import { MAIN_URL } from "../URLS/URLS";
 function SingnUp() {
   const navigate = useNavigate();
-  const URL = `http://localhost:8000/api/register`;
   const [showPass, setShowPass] = useState("password");
   const [showPassConfirm, setShowPassConfirm] = useState("password");
   const [inputs, setInputs] = useState({
@@ -24,7 +24,7 @@ function SingnUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(URL, inputs);
+      const res = await axios.post(`${MAIN_URL}/api/register`, inputs);
       console.log(res.data);
       handeMessage("success", res.data.message);
       setTimeout(() => {

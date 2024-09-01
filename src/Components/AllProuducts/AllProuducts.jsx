@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UrlProducts } from "../URLS/URLS";
+import { MAIN_URL } from "../URLS/URLS";
 import "./AllProuducts.css";
 import axios from "axios";
 import { ContextApi } from "../../Context/AuthContext";
@@ -23,7 +23,7 @@ function AllProuducts() {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`${UrlProducts}/${id}`);
+          axios.delete(`${MAIN_URL}/product/${id}`);
           handeMessage("success", "Delete Produt Successfully!");
 
           setTimeout(() => {
@@ -38,7 +38,7 @@ function AllProuducts() {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await axios.get(`${UrlProducts}${cat}`);
+        const res = await axios.get(`${MAIN_URL}/product${cat}`);
         setProducts(res.data.data);
       } catch (error) {
         console.log(error.message);
@@ -48,7 +48,7 @@ function AllProuducts() {
   }, [cat]);
   return (
     <div className="AllProducts">
-      {products.length ? (
+      {products?.length ? (
         products.map((prod) => {
           return (
             <div key={prod.product_id}>

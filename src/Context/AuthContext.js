@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { handeMessage } from "../Components/SweetAlert/SweetAlert";
-import { mainUrl } from "../Components/URLS/URLS";
+import { MAIN_URL } from "../Components/URLS/URLS";
 export const ContextApi = createContext();
 
 export const AuthContext = ({ children }) => {
@@ -10,7 +10,7 @@ export const AuthContext = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post(`${mainUrl}/api/login`, inputs, {
+    const res = await axios.post(`${MAIN_URL}/api/login`, inputs, {
       withCredentials: true,
     });
     setCurrentUser(res.data.data);
@@ -19,7 +19,7 @@ export const AuthContext = ({ children }) => {
 
   const logout = async () => {
     try {
-      const res = await axios.post(`${mainUrl}/api/logout`, null, {
+      const res = await axios.post(`${MAIN_URL}/api/logout`, null, {
         withCredentials: true,
       });
       setCurrentUser(null);

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UrlUSer, UrlProducts } from "../URLS/URLS";
+import { MAIN_URL } from "../URLS/URLS";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { handeMessage } from "../SweetAlert/SweetAlert";
 import Swal from "sweetalert2";
@@ -23,7 +23,7 @@ function Profile() {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`${UrlProducts}/${id}`);
+          axios.delete(`${MAIN_URL}/product/${id}`);
           handeMessage("success", "Delete Produt Successfully!");
 
           setTimeout(() => {
@@ -38,7 +38,7 @@ function Profile() {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await axios.get(`${UrlUSer}/${userID}`);
+        const res = await axios.get(`${MAIN_URL}/api/users/${userID}`);
         setProducts(res.data.data.products);
       } catch (error) {
         console.log(error.message);

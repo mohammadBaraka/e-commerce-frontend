@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { UrlProducts } from "../URLS/URLS";
+import { MAIN_URL } from "../URLS/URLS";
 import "./Details.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -9,8 +9,8 @@ function Details() {
   console.log(product);
   const productID = useParams();
   useEffect(() => {
-    const res = axios
-      .get(`${UrlProducts}/${productID.product_id}`)
+    axios
+      .get(`${MAIN_URL}/product/${productID.product_id}`)
       .then((response) => {
         console.log(response.data.data);
         setProduct(response.data.data);

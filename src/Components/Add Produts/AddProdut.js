@@ -5,7 +5,7 @@ import { MDBInput, MDBCol } from "mdbreact";
 import "./AddProduct.css";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { UrlProducts, UploadImage } from "../URLS/URLS";
+import { MAIN_URL } from "../URLS/URLS";
 import { handeMessage } from "../SweetAlert/SweetAlert";
 function AddProdut() {
   const state = useLocation().state;
@@ -19,7 +19,7 @@ function AddProdut() {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post(UploadImage, formData, {
+      const res = await axios.post(`${MAIN_URL}/api/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -43,10 +43,10 @@ function AddProdut() {
     };
     try {
       const res = (await state)
-        ? await axios.put(`${UrlProducts}/${state.product_id}`, params, {
+        ? await axios.put(`${MAIN_URL}/product/${state.product_id}`, params, {
             withCredentials: true,
           })
-        : await axios.post(`${UrlProducts}`, params, {
+        : await axios.post(`${MAIN_URL}/product`, params, {
             withCredentials: true,
           });
       {
@@ -57,6 +57,7 @@ function AddProdut() {
       console.log(res.data);
     } catch (error) {
       handeMessage("error", error.response.data);
+      console.log(error?.response?.data);
     }
   };
 
